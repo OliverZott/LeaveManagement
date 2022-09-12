@@ -4,5 +4,5 @@ using MediatR;
 namespace LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
 internal class CreateLeaveRequestCommand : IRequest<int>
 {
-    public CreateLeaveRequestDto LeaveRequestDto { get; set; }
+    public CreateLeaveRequestDto? LeaveRequestDto { get; set; }
 }

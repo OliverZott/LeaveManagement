@@ -9,5 +9,5 @@ namespace LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
 //  - Request/Handler:      transfer/transportation mechanism
 public class CreateLeaveTypeCommand : IRequest<int>
 {
-    public LeaveTypeDto LeaveTypeDto { get; set; }
+    public LeaveTypeDto? LeaveTypeDto { get; set; }
 }
