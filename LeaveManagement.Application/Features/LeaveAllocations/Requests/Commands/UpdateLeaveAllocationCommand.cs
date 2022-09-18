@@ -2,7 +2,7 @@
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveAllocations.Requests.Commands;
-internal class CreateLeaveAllocationCommand : IRequest<int>
+internal class UpdateLeaveAllocationCommand : IRequest<Unit>
 {
-    public CreateLeaveAllocationDto? CreateLeaveAllocationDto { get; set; }
+    public UpdateLeaveAllocationDto LeaveAllocationDto { get; set; }
 }
