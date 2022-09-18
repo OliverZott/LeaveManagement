@@ -2,7 +2,7 @@
 using LeaveManagement.Domain.Common;
 
 namespace LeaveManagement.Application.DTOs.LeaveAllocation;
-public class LeaveAllocationDto : BaseDto
+public class LeaveAllocationDto : BaseDto, ILeaveAllocationDto
 {
     public int NumberOfDays { get; set; }
     public LeaveTypeDto LeaveType { get; set; }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LeaveManagement.Application.DTOs.LeaveType.Validators;
 using LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
 using LeaveManagement.Application.Persistence.Contracts;
 using LeaveManagement.Domain;
@@ -15,13 +16,20 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
         _leaveTypeRepository = leaveTypeRepository;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(CreateLeaveTypeCommand command, CancellationToken cancellationToken)
     {
-        var leaveType = _mapper.Map<LeaveType>(command.LeaveTypeDto);
+        var validator = new CreateLeaveTypeDtoValidator();
+        var validationResult = await validator.ValidateAsync(command.LeaveTypeDto);
 
+        if (validationResult.IsValid == false)
+        {
+            throw new Exception();
+        }
+
+        var leaveType = _mapper.Map<LeaveType>(command.LeaveTypeDto);
         // update after ef core updates
         leaveType = await _leaveTypeRepository.Add(leaveType);
-
         return leaveType.Id;
     }
 }

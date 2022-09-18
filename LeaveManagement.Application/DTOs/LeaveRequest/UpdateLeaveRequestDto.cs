@@ -1,10 +1,11 @@
 ﻿using LeaveManagement.Domain.Common;
 
 namespace LeaveManagement.Application.DTOs.LeaveRequest;
-public class CreateLeaveRequestDto : BaseDto, ILeaveRequestDto
+internal class UpdateLeaveRequestDto : BaseDto, ILeaveRequestDto
 {
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int LeaveTypeId { get; set; }
     public string RequestComment { get; set; }
+    public bool Cancelled { get; set; }
 }
