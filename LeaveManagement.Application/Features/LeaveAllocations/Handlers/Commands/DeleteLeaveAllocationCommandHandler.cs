@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using LeaveManagement.Application.Exceptions;
 using LeaveManagement.Application.Features.LeaveAllocations.Requests.Commands;
 using LeaveManagement.Application.Persistence.Contracts;
+using LeaveManagement.Domain;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveAllocations.Handlers.Commands;
@@ -18,6 +20,10 @@ internal class DeleteLeaveAllocationCommandHandler : IRequestHandler<DeleteLeave
     public async Task<Unit> Handle(DeleteLeaveAllocationCommand request, CancellationToken cancellationToken)
     {
         var leaveAllocation = await _leaveAllocationRepository.Get(request.Id);
+        if (leaveAllocation is null)
+        {
+            throw new NotFoundException(nameof(LeaveAllocation), request.Id);
+        }
         await _leaveAllocationRepository.Delete(leaveAllocation);
         return Unit.Value;
     }

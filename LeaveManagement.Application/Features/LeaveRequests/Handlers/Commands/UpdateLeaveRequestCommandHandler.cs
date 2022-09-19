@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LeaveManagement.Application.DTOs.LeaveRequest.Validators;
 using LeaveManagement.Application.DTOs.LeaveType.Validators;
+using LeaveManagement.Application.Exceptions;
 using LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
 using LeaveManagement.Application.Persistence.Contracts;
 using MediatR;
@@ -26,7 +27,7 @@ internal class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveReq
 
         if (validationResult.IsValid == false)
         {
-            throw new Exception();
+            throw new ValidationException(validationResult);
         }
 
 
