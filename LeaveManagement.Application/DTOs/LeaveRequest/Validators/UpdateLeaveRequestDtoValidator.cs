@@ -4,12 +4,12 @@ using LeaveManagement.Application.Persistence.Contracts;
 namespace LeaveManagement.Application.DTOs.LeaveRequest.Validators;
 internal class UpdateLeaveRequestDtoValidator : AbstractValidator<UpdateLeaveRequestDto>
 {
-    private readonly ILeaveRequestRepository _leaveRequestRepository;
+    private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-    public UpdateLeaveRequestDtoValidator(ILeaveRequestRepository leaveRequestRepository)
+    public UpdateLeaveRequestDtoValidator(ILeaveTypeRepository leaveTypeRepository)
     {
-        _leaveRequestRepository = leaveRequestRepository;
-        Include(new ILeaveRequestDtoValidator(_leaveRequestRepository));
+        _leaveTypeRepository = leaveTypeRepository;
+        Include(new ILeaveRequestDtoValidator(_leaveTypeRepository));
 
         RuleFor(p => p.Id)
             .NotNull().WithMessage("{PropertyName} must be present.");

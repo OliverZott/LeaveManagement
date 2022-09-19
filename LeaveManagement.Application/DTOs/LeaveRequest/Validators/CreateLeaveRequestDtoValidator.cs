@@ -4,11 +4,11 @@ using LeaveManagement.Application.Persistence.Contracts;
 namespace LeaveManagement.Application.DTOs.LeaveRequest.Validators;
 internal class CreateLeaveRequestDtoValidator : AbstractValidator<CreateLeaveRequestDto>
 {
-    private readonly ILeaveRequestRepository _leaveRequestRepository;
+    private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-    public CreateLeaveRequestDtoValidator(ILeaveRequestRepository leaveRequestRepository)
+    public CreateLeaveRequestDtoValidator(ILeaveTypeRepository leaveTypeRepository)
     {
-        _leaveRequestRepository = leaveRequestRepository;
-        Include(new ILeaveRequestDtoValidator(leaveRequestRepository));
+        _leaveTypeRepository = leaveTypeRepository;
+        Include(new ILeaveRequestDtoValidator(leaveTypeRepository));
     }
 }

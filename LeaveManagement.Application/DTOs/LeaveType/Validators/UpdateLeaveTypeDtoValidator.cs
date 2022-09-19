@@ -8,6 +8,6 @@ internal class UpdateLeaveTypeDtoValidator : AbstractValidator<LeaveTypeDto>
         Include(new ILeaveTypeDtoValidator()); // Includes all rules 
 
         RuleFor(p => p.Id)
-            .NotNull().WithMessage("{PropertyName} must be present.")
+            .NotNull().WithMessage("{PropertyName} must be present.");
     }
 }
