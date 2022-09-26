@@ -3,7 +3,7 @@ using LeaveManagement.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Persistence;
-internal class LeaveManagementDbContext : DbContext
+public class LeaveManagementDbContext : DbContext
 {
     public LeaveManagementDbContext(DbContextOptions<LeaveManagementDbContext> options) : base(options)
     {

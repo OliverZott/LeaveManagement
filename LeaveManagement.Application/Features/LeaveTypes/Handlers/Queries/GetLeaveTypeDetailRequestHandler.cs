@@ -2,6 +2,7 @@
 using LeaveManagement.Application.DTOs.LeaveType;
 using LeaveManagement.Application.Features.LeaveTypes.Requests.Queries;
 using LeaveManagement.Application.Persistence.Contracts;
+using LeaveManagement.Domain;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveTypes.Handlers.Queries;
