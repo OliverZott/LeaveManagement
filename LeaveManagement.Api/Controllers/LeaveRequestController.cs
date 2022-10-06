@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LeaveManagement.Api.Controllers;
-[Route("api/[controller]/{id:int}")]
+[Route("api/[controller]")]
 [ApiController]
 public class LeaveRequestController : ControllerBase
 {
@@ -26,7 +26,7 @@ public class LeaveRequestController : ControllerBase
     }
 
     // GET api/<ValuesController>/5
-    [HttpGet("")]
+    [HttpGet("{id:int}")]
     public async Task<LeaveRequestDto> Get(int id)
     {
         var leaveRequestDto = await _mediator.Send(new GetLeaveRequestDetailRequest { Id = id });
@@ -42,7 +42,7 @@ public class LeaveRequestController : ControllerBase
     }
 
     // PUT api/<ValuesController>/5
-    [HttpPut("")]
+    [HttpPut("{id:int}")]
     public async Task<ActionResult> Put(int id, [FromBody] UpdateLeaveRequestDto updateLeaveRequestDto)
     {
         await _mediator.Send(new UpdateLeaveRequestCommand
@@ -66,7 +66,7 @@ public class LeaveRequestController : ControllerBase
     }
 
     // DELETE api/<ValuesController>/5
-    [HttpDelete("")]
+    [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {
         await _mediator.Send(new DeleteLeaveRequestCommand { Id = id });

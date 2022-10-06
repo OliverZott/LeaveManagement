@@ -8,6 +8,8 @@ Part I
 - CQRS
 - FluentValidation
 - Exceptionhandling & Custom Responses
+- Controllers
+- Seeding / DataBase Configuration 
 
 Part II
 
@@ -46,3 +48,8 @@ Either command/query will be handled by **handlers**.
 
 - Install package `FluentValidation.DependencyInjectionExtensions`
 - Create DtoValidator classes
+
+## Seeding DataBase / Configuration DataBase
+
+- add-migration <MigrationMessage>
+- update-database
