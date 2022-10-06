@@ -2,7 +2,8 @@
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
-internal class UpdateLeaveTypeCommand : IRequest<Unit>
+public class UpdateLeaveTypeCommand : IRequest<Unit>
 {
     public LeaveTypeDto LeaveTypeDto { get; set; }
+    public int Id { get; set; }
 }

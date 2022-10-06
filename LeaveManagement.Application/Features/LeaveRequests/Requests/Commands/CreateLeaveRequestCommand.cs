@@ -3,7 +3,7 @@ using LeaveManagement.Application.Responses;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
-internal class CreateLeaveRequestCommand : IRequest<BaseCommandResponse>
+public class CreateLeaveRequestCommand : IRequest<BaseCommandResponse>
 {
     public CreateLeaveRequestDto? LeaveRequestDto { get; set; }
 }

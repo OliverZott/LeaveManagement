@@ -6,7 +6,7 @@ using LeaveManagement.Application.Persistence.Contracts;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands;
-internal class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCommand, Unit>
+public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCommand, Unit>
 {
     private readonly ILeaveTypeRepository _leaveTypeRepository;
     private readonly IMapper _mapper;
@@ -19,6 +19,10 @@ internal class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCo
 
     public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
+        if (request.LeaveTypeDto.Id != request.Id)
+        {
+            throw new Exception($"Wrong ID: {request.Id}");
+        }
         var validator = new UpdateLeaveTypeDtoValidator();
         var validationResult = await validator.ValidateAsync(request.LeaveTypeDto);
 

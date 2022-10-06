@@ -6,7 +6,7 @@ using LeaveManagement.Application.Persistence.Contracts;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveAllocations.Handlers.Commands;
-internal class UpdateLeaveAllocationCommandHandler : IRequestHandler<UpdateLeaveAllocationCommand, Unit>
+public class UpdateLeaveAllocationCommandHandler : IRequestHandler<UpdateLeaveAllocationCommand, Unit>
 {
     private readonly ILeaveAllocationRepository _leaveAllocationRepository;
     private readonly ILeaveTypeRepository _leaveTypeRepository;

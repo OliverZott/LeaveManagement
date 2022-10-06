@@ -5,7 +5,7 @@ using LeaveManagement.Application.Persistence.Contracts;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands;
-internal class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeCommand>
+public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeCommand>
 {
     private readonly ILeaveTypeRepository _leaveTypeRepository;
     private readonly IMapper _mapper;

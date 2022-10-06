@@ -2,6 +2,6 @@
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveRequests.Requests.Queries;
-internal class GetLeaveRequestListRequest : IRequest<List<LeaveRequestListDto>>
+public class GetLeaveRequestListRequest : IRequest<List<LeaveRequestListDto>>
 {
 }

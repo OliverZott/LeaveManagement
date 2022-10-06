@@ -8,14 +8,12 @@ namespace LeaveManagement.Application.Features.LeaveRequests.Handlers.Queries;
 internal class GetLeaveRequestDetailRequestHandler : IRequestHandler<GetLeaveRequestDetailRequest, LeaveRequestDto>
 {
     private readonly ILeaveRequestRepository _leaveRequestRepository;
-    private readonly ILeaveTypeRepository _leaveTypeRepository;
     private readonly IMapper _mapper;
 
-    public GetLeaveRequestDetailRequestHandler(ILeaveRequestRepository leaveRequestRepository, IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+    public GetLeaveRequestDetailRequestHandler(ILeaveRequestRepository leaveRequestRepository, IMapper mapper)
     {
         _leaveRequestRepository = leaveRequestRepository;
         _mapper = mapper;
-        _leaveTypeRepository = leaveTypeRepository;
     }
     public async Task<LeaveRequestDto> Handle(GetLeaveRequestDetailRequest request, CancellationToken cancellationToken)
     {
