@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LeaveManagement.Persistence": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
