@@ -21,10 +21,13 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
     public async Task<int> Handle(CreateLeaveTypeCommand command, CancellationToken cancellationToken)
     {
         var validator = new CreateLeaveTypeDtoValidator();
-        var validationResult = await validator.ValidateAsync(command.LeaveTypeDto);
+        if (command.LeaveTypeDto != null)
+        {
+            var validationResult = await validator.ValidateAsync(command.LeaveTypeDto, cancellationToken);
 
-        if (validationResult.IsValid == false)
-            throw new ValidationException(validationResult);
+            if (validationResult.IsValid == false)
+                throw new ValidationException(validationResult);
+        }
 
         var leaveType = _mapper.Map<LeaveType>(command.LeaveTypeDto);
         // update after ef core updates
