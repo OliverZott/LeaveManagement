@@ -1,4 +1,7 @@
+using LeaveManagement.MVC.Contracts;
 using LeaveManagement.MVC.Services;
+using LeaveManagement.MVC.Services.Base;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +10,18 @@ builder.Services.AddControllersWithViews();
 
 // SSL Port from Api project, launch.settings
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44366"));
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();
+
+
+//builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
+//builder.Services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
+//builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
+
+builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 

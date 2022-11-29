@@ -53,3 +53,7 @@ Either command/query will be handled by **handlers**.
 
 - add-migration <MigrationMessage>
 - update-database
+
+## MVC project
+
+- **NSwag** to generate Client Stub
