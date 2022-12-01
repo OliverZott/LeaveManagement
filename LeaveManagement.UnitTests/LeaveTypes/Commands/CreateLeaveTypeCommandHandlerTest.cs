@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using LeaveManagement.Application.DTOs.LeaveType;
-using LeaveManagement.Application.Exceptions;
 using LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands;
 using LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
 using LeaveManagement.Application.Persistence.Contracts;
 using LeaveManagement.Application.Profiles;
+using LeaveManagement.Application.Responses;
 using LeaveManagement.UnitTests.Mocks;
 using Moq;
 using Shouldly;
@@ -41,7 +41,7 @@ public class CreateLeaveTypeCommandHandlerTest
         var leaveTypes = _mock.Object.GetAll();
 
         // Assert
-        result.ShouldBeOfType<int>();
+        result.ShouldBeOfType<BaseCommandResponse>();
         leaveTypes.Result.Count().ShouldBe(3);
     }
 
@@ -57,10 +57,19 @@ public class CreateLeaveTypeCommandHandlerTest
         };
         var createLeaveTypeCommand = new CreateLeaveTypeCommand { LeaveTypeDto = invalidLeaveTypeDto };
 
+        var expected = new BaseCommandResponse
+        {
+            Id = 0,
+            Success = false,
+            Message = "Creation failed",
+            Errors = new List<string> { "Name is required", "'Name' must not be empty.", "Default Days must be greater than 0" }
+        };
+
         // Act
-        var validationException = await Should.ThrowAsync<ValidationException>(async () => await handler.Handle(createLeaveTypeCommand, CancellationToken.None));
+        var result = await handler.Handle(createLeaveTypeCommand, CancellationToken.None);
 
         // Assert
-        validationException.ShouldNotBeNull();
+        result.ShouldBeOfType<BaseCommandResponse>();  // easier
+        Assert.Equivalent(expected, result);
     }
 }
